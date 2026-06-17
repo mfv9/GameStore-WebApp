@@ -1,0 +1,44 @@
+﻿@using DEMO2
+@model List<VideoJuego>
+
+<div class="row row-cols-1 row-cols-md-5 g-4">
+
+    @foreach (var juego in Model)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+
+                <img src="img/@juego.Foto"
+                     class="card-img-top"
+                     alt="@juego.Nombre">
+
+                <div class="card-body">
+                    <h5 class="card-title">@juego.Nombre</h5>
+
+                    <p class="card-text">
+                        @if (Context.Session.GetInt32("LogueadoId") != null)
+                        {
+
+                            <a class="btn btn-dark">Comprar</a>
+
+                        }
+
+                    
+                    </p>
+                </div>
+
+                <div class="card-footer">
+                    <small class="text-muted">
+                        @if (Context.Session.GetInt32("LogueadoId") != null)
+                        {
+                            <span>Precio: $@juego.Precio</span>
+                        }
+
+                    </small>
+                </div>
+
+            </div>
+        </div>
+    }
+
+</div>

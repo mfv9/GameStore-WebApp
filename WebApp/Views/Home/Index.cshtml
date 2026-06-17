@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="text-center mt-5">
+    <h1 class="display-4">🎮 Bienvenido a GameStore</h1>
+
+    <p class="lead mt-3">
+        Gestiona y compra tus videojuegos favoritos.
+    </p>
+
+    <div class="mt-4">
+        <a asp-controller="Auth"
+           asp-action="Login"
+           class="btn btn-primary btn-lg me-2">
+            Iniciar Sesión
+        </a>
+
+        <a asp-controller="Cliente"
+           asp-action="Create"
+           class="btn btn-outline-secondary btn-lg">
+            Registrarse
+        </a>
+    </div>
+
+    <p class="mt-4 text-muted">
+        ¿No tienes una cuenta? Regístrate para comenzar.
+    </p>
+</div>

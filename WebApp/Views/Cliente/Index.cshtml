@@ -1,0 +1,66 @@
+﻿@using DEMO2
+@model List<Cliente>
+<h1>Lista clientes</h1>
+
+<p>
+    <a asp-action="Create">Crear usuario prueba</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               ID
+            </th>
+            <th>
+               Nombre
+            </th>
+            <th>
+               Apellido
+            </th>
+            <th>
+               Email
+            </th>
+            <th>
+               Fecha de nacimiento
+            </th>
+            <th>
+                Esta activo
+            </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+          
+            <td>
+                    @item.Id
+            </td>
+            <td>
+                    @item.Nombre
+            </td>
+            <td>
+                    @item.Apellido
+            </td>
+            <td>
+                    @item.Email
+            </td>
+            <td>
+                    @item.FechNac
+            </td>
+                <td>
+                    @item.EsActivo
+                </td>
+            
+            <td>
+                    @Html.ActionLink("Editar", "Edit", new {  id=item.Id }) |
+                    @Html.ActionLink("Detalles", "Details", new {  id=item.Id }) |
+                    @Html.ActionLink("Desactivar", "Delete", new {  id=item.Id })
+                    @Html.ActionLink("Activar", "Activate", new { id = item.Id })
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

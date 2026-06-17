@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="DEMO2/DEMO2.csproj" />
+  <Project Path="UI/UI.csproj" />
+  <Project Path="WebApp/WebApp.csproj" />
+</Solution>

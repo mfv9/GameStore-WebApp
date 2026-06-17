@@ -1,0 +1,46 @@
+﻿@using DEMO2
+@model Cliente
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label class="control-label">Nombre</label>
+                <input asp-for="Nombre" class="form-control" />
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Apellido</label>
+                <input asp-for="Apellido" class="form-control" />
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" />
+
+            </div>
+
+          
+
+            <div class="form-group">
+                <label class="control-label">Fecha Nacimiento</label>
+                <input asp-for="FechNac" type="Date" class="form-control" />
+
+            </div>
+          
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<p>@ViewBag.msg</p>

@@ -1,0 +1,14 @@
+﻿@using DEMO2
+@model Cliente
+<h1>Desactivar</h1>
+<h3>¿Está seguro que desea desactivar esta persona?</h3>
+<div>
+    <form method="post">
+        <input type="submit" value="Desactivar" class="btn btn-danger" /> |
+        <input type="checkbox" name="IsChecked" value="true" /><span>Entiendo que esta operación es riesgosa</span>
+        <a asp-action="Index">Volver a la lista</a>
+    </form>
+</div>
+<p>@ViewBag.msg</p>
+
+}
