@@ -22,7 +22,10 @@ namespace DEMO2
 
         public override decimal CalcularPrecioRealSiLlevaOnoDlc(bool llevaDLC)
         {
-            return 0;
+            if (llevaDLC) {
+                return Precio + 150;
+            }
+            return Precio;
         }
 
     }

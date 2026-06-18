@@ -18,15 +18,15 @@
                     <p class="card-text">
                         @if (Context.Session.GetInt32("LogueadoId") != null)
                         {
-
-                            <a class="btn btn-dark">Comprar</a>
-
+                            <a asp-controller="Carrito"
+                               asp-action="Comprar"
+                               asp-route-id="@juego.Id"
+                               class="btn btn-success">
+                                Comprar
+                            </a>
                         }
-
-                    
                     </p>
                 </div>
-
                 <div class="card-footer">
                     <small class="text-muted">
                         @if (Context.Session.GetInt32("LogueadoId") != null)

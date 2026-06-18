@@ -1,0 +1,37 @@
+﻿@using DEMO2
+@model List<CarritoCompra>
+
+<h2>Mi Carrito</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>El carrito está vacío.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Juego</th>
+                <th>DLC</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.VideoJuego.Nombre</td>
+                    <td>
+                        @(item.TieneDLC ? "Sí" : "No")
+                    </td>
+                    <td>$@item.VideoJuego.Precio</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h4>
+        Total: $@Model.Sum(c => c.VideoJuego.Precio)
+    </h4>
+}

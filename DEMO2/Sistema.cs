@@ -12,6 +12,10 @@ namespace DEMO2
 
         private List<Cliente> _clientes = new List<Cliente>();
         private List<VideoJuego> _juegos = new List<VideoJuego>();
+        private List<Compra> _compras = new List<Compra>();
+        public Compra CarritoActual { get; set; } = new Compra();
+
+
 
         private Sistema()
         {
@@ -26,9 +30,6 @@ namespace DEMO2
             }
             return instancia;
         }
-
-
-
         public void AltaCliente(Cliente c)
         {
             c.Validar();
@@ -46,6 +47,10 @@ namespace DEMO2
         {
             _juegos.Add(v);
         }
+        public void AltaCompra(Compra  c)
+        {
+            _compras.Add(c);
+        }
 
 
         public Cliente FindClientById(int id)
@@ -61,7 +66,6 @@ namespace DEMO2
         }
 
         public void ActualizarUsuario(Cliente c)
-
         {
             Cliente buscado = FindClientById(c.Id);
 
@@ -100,9 +104,6 @@ namespace DEMO2
 
 
         }
-
-
-
         public List<Cliente> GetClientes()
         {
             return _clientes;
@@ -110,6 +111,11 @@ namespace DEMO2
         public List<VideoJuego> GetJuegos()
         {
             return _juegos;
+        }
+
+        public List<Compra> GetCompras()
+        {
+            return _compras;
         }
 
 
@@ -142,19 +148,34 @@ namespace DEMO2
                 }
 
             }
-
-         
-
             return ret;
         }
 
+        public VideoJuego FindJuegoPor(int id)
+        {
+            foreach(VideoJuego vj in _juegos)
+            {
+                if(vj.Id == id)
+                {
+                    return vj;
+                }
+            }
+            return null;
+        }
 
-
-
-
-
-
-
+        public void AgregarAlCarrito(int id, bool dlc)
+        {
+            VideoJuego juego = FindJuegoPor(id);
+            if(juego!=null)
+            {
+                CarritoCompra item = new CarritoCompra
+                {
+                    VideoJuego = juego,
+                    TieneDLC = dlc
+                };
+                CarritoActual.Juegos.Add(item);
+            }
+        }
         private void Precarga()
         {
 
