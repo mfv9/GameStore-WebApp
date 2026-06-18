@@ -1,0 +1,48 @@
+﻿<div class="hero">
+    <div class="hero-content">
+        <h1>🎮 ¡Bienvenido a GameStore!</h1>
+        <p>
+            Descubrí nuevos videojuegos, agregalos a tu carrito y disfrutá de las mejores experiencias.
+        </p>
+
+        <div class="hero-buttons">
+            <a asp-controller="VideoJuego" asp-action="Index" class="btn-primary-custom">
+                Explorar juegos
+            </a>
+
+            <a asp-controller="VideoJuego" asp-action="Buscar" class="btn-primary-custom">
+               Buscar juegos
+            </a>
+
+            <a asp-controller="Carrito" asp-action="Index" class="btn-secondary-custom">
+                Ver carrito
+            </a>
+        </div>
+    </div>
+</div>
+
+<section class="cards-container">
+
+    <div class="info-card">
+        <h2>🕹️ Catálogo</h2>
+        <p>
+            Explorá una amplia colección de juegos de distintos géneros.
+            Encontrá tu próxima aventura.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <h2>🛒 Carrito</h2>
+        <p>
+            Guardá todos los juegos que quieras comprar y revisalos antes de finalizar la compra.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <h2>⭐ DLC disponibles</h2>
+        <p>
+            Algunos videojuegos cuentan con contenido adicional para ampliar la experiencia.
+        </p>
+    </div>
+
+</section>

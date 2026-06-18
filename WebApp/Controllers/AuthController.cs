@@ -33,7 +33,7 @@ namespace WebApp.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Menu", "Home");
 
                 }
 

@@ -26,12 +26,13 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+                      
 
                         @if (lid == null)
                         {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
                             <a class="nav-link text-dark" asp-area="" asp-controller="VideoJuego" asp-action="Index">Ver juegos</a>
 
                           
@@ -42,17 +43,21 @@
                         else
                         {
                             @* Acá van los botones que ven los dos roles *@
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Menu">Menu principal</a>
+                            </li>
+                        
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">Logout</a>
+                                <a class="nav-link text-dark" asp-controller="Auth" asp-action="Logout">Logout</a>
                             </li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="VideoJuego" asp-action="Index">Ver juegos</a>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="VideoJuego" asp-action="Buscar">Buscar</a>
-                            <a asp-controller="Carrito" asp-action="Index">
-                                <img src="~/img/carrito.svg" alt="Carrito" width="35" height="35">
-                            </a>
 
-                                    
+                            <li class="nav-item ms-auto">
+                                <a asp-controller="Carrito" asp-action="Index" class="nav-link carrito-link">
+                                    <img src="~/img/carrito.svg" alt="Carrito">
+                                </a>
+                            </li>
+
                             if (lrol == "Administrador")
                             {
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="Index">Ver clientes</a>
@@ -65,7 +70,7 @@
                             }
 
                         }
-                      
+
                     </ul>
                 </div>
             </div>
