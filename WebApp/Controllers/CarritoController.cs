@@ -16,6 +16,7 @@ namespace WebApp.Controllers
         public IActionResult Comprar(int id, bool dlc)
         {
             s.AgregarAlCarrito(id, dlc);
+
             return RedirectToAction("Index", "Carrito");
         }
      

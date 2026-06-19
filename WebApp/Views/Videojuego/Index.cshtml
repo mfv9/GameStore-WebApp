@@ -6,11 +6,7 @@
     @foreach (var juego in Model)
     {
         <div class="col">
-
-
             <div class="card h-100 shadow-sm">
-
-                
                 <img src="img/@juego.Foto"
                      class="card-img-top"
                      alt="@juego.Nombre">
@@ -18,22 +14,30 @@
                 <div class="card-body">
                     <form method="post" asp-action="Comprar" asp-controller="Carrito">
                         <h5 class="card-title">@juego.Nombre</h5>
-                        @if (juego.DLC)
+                        @if (Context.Session.GetInt32("LogueadoId") != null)
                         {
                             <input type="hidden" name="id" value="@juego.Id" />
-                            <label>
-                                <input type="checkbox" name="dlc" value="true" />
-                                ¿Desea agregar el DLC?
-                            </label>
-                        }
-
-
-                        <p class="card-text">
-                            @if (Context.Session.GetInt32("LogueadoId") != null)
+                            @if (juego.DLC)
                             {
-                             <button type="submit">Comprar</button>
+                                @if (juego is Virtual v)
+                                {
+                                    <label>
+                                        ¿Desea agregar el DLC por el total de $@v.CalcularPrecioRealSiLlevaOnoDlc(v.DLC) ?
+                                    </label>
+                                }
+                                else if (juego is Fisico f)
+                                {
+                                    <label>
+                                        ¿Desea agregar el DLC por el total de  $@f.CalcularPrecioRealSiLlevaOnoDlc(f.DLC) ?
+                                    </label>
+                                }
+                                <input type="checkbox" name="dlc" value="true" />
+
                             }
-                        </p>
+                            <p class="card-text">
+                                <button type="submit">Comprar</button>
+                            </p>
+                        }
                     </form>
                 </div>
                 <div class="card-footer">
@@ -42,7 +46,6 @@
                         {
                             <span>Precio: $@juego.Precio</span>
                         }
-
                     </small>
                 </div>
 

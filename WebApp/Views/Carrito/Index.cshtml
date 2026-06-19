@@ -25,13 +25,13 @@ else
                     <td>
                         @(item.CompraDLC ? "Sí" : "No")
                     </td>
-                    <td>$@item.VideoJuego.Precio</td>
+                    <td>$@item.VideoJuego.CalcularPrecioRealSiLlevaOnoDlc(item.CompraDLC)</td>
                 </tr>
             }
         </tbody>
     </table>
 
     <h4>
-        Total: $@Model.Sum(c => c.VideoJuego.Precio)
+        Total: $@Model.Sum(c => c.VideoJuego.CalcularPrecioRealSiLlevaOnoDlc(c.CompraDLC))
     </h4>
 }
