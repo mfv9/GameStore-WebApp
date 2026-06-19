@@ -12,9 +12,10 @@ namespace WebApp.Controllers
             return View(s.CarritoActual.Juegos);
         }
 
+        [HttpPost]
         public IActionResult Comprar(int id, bool dlc)
         {
-            s.AgregarAlCarrito(id, false);
+            s.AgregarAlCarrito(id, dlc);
             return RedirectToAction("Index", "Carrito");
         }
      

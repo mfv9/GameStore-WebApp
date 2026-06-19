@@ -6,26 +6,35 @@
     @foreach (var juego in Model)
     {
         <div class="col">
+
+
             <div class="card h-100 shadow-sm">
 
+                
                 <img src="img/@juego.Foto"
                      class="card-img-top"
                      alt="@juego.Nombre">
 
                 <div class="card-body">
-                    <h5 class="card-title">@juego.Nombre</h5>
-
-                    <p class="card-text">
-                        @if (Context.Session.GetInt32("LogueadoId") != null)
+                    <form method="post" asp-action="Comprar" asp-controller="Carrito">
+                        <h5 class="card-title">@juego.Nombre</h5>
+                        @if (juego.DLC)
                         {
-                            <a asp-controller="Carrito"
-                               asp-action="Comprar"
-                               asp-route-id="@juego.Id"
-                               class="btn btn-success">
-                                Comprar
-                            </a>
+                            <input type="hidden" name="id" value="@juego.Id" />
+                            <label>
+                                <input type="checkbox" name="dlc" value="true" />
+                                ¿Desea agregar el DLC?
+                            </label>
                         }
-                    </p>
+
+
+                        <p class="card-text">
+                            @if (Context.Session.GetInt32("LogueadoId") != null)
+                            {
+                             <button type="submit">Comprar</button>
+                            }
+                        </p>
+                    </form>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">
@@ -37,6 +46,7 @@
                     </small>
                 </div>
 
+                
             </div>
         </div>
     }

@@ -171,7 +171,9 @@ namespace DEMO2
                 CarritoCompra item = new CarritoCompra
                 {
                     VideoJuego = juego,
-                    TieneDLC = dlc
+                    CompraDLC = dlc,
+                  
+              
                 };
                 CarritoActual.Juegos.Add(item);
             }
@@ -186,6 +188,7 @@ namespace DEMO2
             j1.Foto = "apex.jpg";
             j1.Stock = 30;
             j1.Descripcion = "Apex Legends es un videojuego de disparos en primera persona del género battle royale. Los jugadores forman escuadrones y compiten en un mapa donde deben sobrevivir eliminando rivales y aprovechando las habilidades únicas de cada personaje.";
+            j1.DLC = false;
 
             Fisico j2 = new Fisico();
             j2.Nombre = "Call of Duty: Modern Warfare II";
@@ -194,6 +197,8 @@ namespace DEMO2
             j2.Foto = "callofduty.jpg";
             j2.Stock = 50;
             j2.Descripcion = "Call of Duty: Modern Warfare II es un shooter en primera persona que continúa la historia de la Fuerza Operativa 141. Incluye una campaña cinematográfica, modos multijugador competitivos y experiencias cooperativas.";
+            j2.DLC = true;
+
 
             Fisico j3 = new Fisico();
             j3.Nombre = "Counter-Strike 2";
@@ -202,6 +207,7 @@ namespace DEMO2
             j3.Foto = "cs2.jpg";
             j3.Stock = 20;
             j3.Descripcion = "Counter-Strike 2 es un juego de disparos táctico por equipos donde terroristas y antiterroristas se enfrentan en rondas basadas en objetivos como desactivar bombas o rescatar rehenes.";
+            j3.DLC = false;
 
             Fisico j4 = new Fisico();
             j4.Nombre = "EA Sports FC 25";
@@ -210,6 +216,8 @@ namespace DEMO2
             j4.Foto = "FC25.jpg";
             j4.Stock = 40;
             j4.Descripcion = "EA Sports FC 25 es un simulador de fútbol que permite disputar partidos, gestionar equipos y competir en distintos modos de juego con licencias oficiales de clubes, ligas y futbolistas.";
+            j4.DLC = false;
+
 
             AltaJuego(j1);
             AltaJuego(j2);
@@ -223,6 +231,7 @@ namespace DEMO2
             j5.Plataforma = "PC";
             j5.TamañoGB = 50;
             j5.Descripcion = "Fortnite es un videojuego multijugador de acción y supervivencia conocido por su modo battle royale, donde cien jugadores compiten para ser el último en pie mientras construyen estructuras y exploran el mapa.";
+            j5.DLC = false;
 
             Virtual j6 = new Virtual();
             j6.Nombre = "Genshin Impact";
@@ -231,6 +240,7 @@ namespace DEMO2
             j6.Plataforma = "PC";
             j6.TamañoGB = 100;
             j6.Descripcion = "Genshin Impact es un RPG de acción de mundo abierto ambientado en el continente de Teyvat. Los jugadores exploran, completan misiones y forman equipos de personajes con habilidades elementales.";
+            j6.DLC = true;
 
             Virtual j7 = new Virtual();
             j7.Nombre = "Minecraft";
@@ -239,6 +249,7 @@ namespace DEMO2
             j7.Plataforma = "PC";
             j7.TamañoGB = 2;
             j7.Descripcion = "Minecraft es un juego de construcción y aventura en un mundo generado de forma procedimental. Permite recolectar recursos, fabricar objetos, construir estructuras y sobrevivir frente a criaturas.";
+            j7.DLC = false;
 
             Virtual j8 = new Virtual();
             j8.Nombre = "Roblox";
@@ -247,6 +258,7 @@ namespace DEMO2
             j8.Plataforma = "PC";
             j8.TamañoGB = 1;
             j8.Descripcion = "Roblox es una plataforma de videojuegos en línea donde los usuarios pueden crear, compartir y jugar experiencias desarrolladas por la comunidad en una gran variedad de géneros.";
+            j8.DLC = false;
 
             AltaJuego(j5);
             AltaJuego(j6);

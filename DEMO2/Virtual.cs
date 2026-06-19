@@ -9,7 +9,7 @@ namespace DEMO2
         public string Plataforma { get; set; }
         public double TamañoGB { get; set; }
 
-        public Virtual(string plat, double size, string name, decimal precio, string foto, string descripcion) : base(name, precio, foto, descripcion)
+        public Virtual(string plat, double size, string name, decimal precio, string foto, string descripcion, bool dlc) : base(name, precio, foto, descripcion,dlc)
         {
             Plataforma = plat;
             TamañoGB = size;

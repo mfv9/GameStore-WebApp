@@ -9,10 +9,11 @@ namespace DEMO2
         public int Stock { get; set; }
         public string Formato { get; set; }
 
-        public Fisico(int stock, string formato, string name, decimal precio, string foto, string descripcion) : base(name,precio,foto,descripcion)
+        public Fisico(int stock, string formato, string name, decimal precio, string foto, string descripcion,bool dlc ) : base(name,precio,foto,descripcion, dlc)
         {
             Stock = stock;
             Formato = formato;
+            DLC = dlc;
         }
         public Fisico()
         {
