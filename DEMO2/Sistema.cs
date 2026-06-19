@@ -89,6 +89,24 @@ namespace DEMO2
             }
         }
 
+        public void QuitarJuegoDelCarrito(int id)
+        {
+            CarritoCompra eliminar = null;
+
+            foreach (CarritoCompra cc in CarritoActual.Juegos)
+            {
+                if(cc.VideoJuego.Id == id)
+                {
+                    eliminar = cc;
+                    break;
+                }
+
+            }
+            if (eliminar != null){
+                CarritoActual.Juegos.Remove(eliminar);
+            }
+        }
+
         public void ActivarUsuario(Cliente c)
         {
             Cliente buscado = FindClientById(c.Id);

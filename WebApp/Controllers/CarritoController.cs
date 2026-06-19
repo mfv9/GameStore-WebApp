@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
 {
- 
+
     public class CarritoController : Controller
     {
         Sistema s = Sistema.getInstance();
@@ -15,10 +15,34 @@ namespace WebApp.Controllers
         [HttpPost]
         public IActionResult Comprar(int id, bool dlc)
         {
-            s.AgregarAlCarrito(id, dlc);
+            try
+            {
+                s.AgregarAlCarrito(id, dlc);
+                
+            }
+            catch (Exception e)
+            {
 
+                ViewBag.msg = "Error: " + e.Message;
+
+            }
             return RedirectToAction("Index", "Carrito");
         }
-     
+
+        [HttpPost]
+
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                s.QuitarJuegoDelCarrito(id);
+            }
+            catch (Exception e)
+            {
+                ViewBag.msg = "Error: " + e.Message;
+            }
+            return RedirectToAction("Index", "Carrito");
+        }
+
     }
 }
