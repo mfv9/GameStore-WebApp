@@ -1,5 +1,6 @@
 ﻿using DEMO2;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -60,6 +61,11 @@ namespace WebApp.Controllers
         public IActionResult Details(int id)
         {
             return View(s.FindClientById(id));
+        }
+
+        public IActionResult VerMiPerfil(LoginViewModel lvm)
+        {
+            return View(lvm);
         }
 
         public IActionResult Delete(int id)

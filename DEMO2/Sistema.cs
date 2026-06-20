@@ -62,6 +62,18 @@ namespace DEMO2
             return null;
         }
 
+        public Cliente FindClientByEmail(string email)
+        {
+            foreach (Cliente c in _clientes)
+            {
+                if (c.Email.Equals(email))
+                {
+                    return c;
+                }
+            }
+            return null;
+        }
+
         public void ActualizarUsuario(Cliente c)
         {
             Cliente buscado = FindClientById(c.Id);

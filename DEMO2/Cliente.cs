@@ -37,13 +37,9 @@ namespace DEMO2
             Password = pass;
             FechNac = fecha;
             EsActivo = true;
-
             Rol = "Cliente";
         }
-           
-        
-
-
+         
         public void Validar()
         {
 
