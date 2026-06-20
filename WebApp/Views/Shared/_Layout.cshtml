@@ -1,8 +1,10 @@
 ﻿@{
     int? lid = Context.Session.GetInt32("LogueadoId");
     string lrol = Context.Session.GetString("LogueadoRol");
-
+    int cantidad = Context.Session.GetInt32("CantidadCarrito") ?? 0;
 }
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +28,8 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                      
 
+                      
                         @if (lid == null)
                         {
                             <li class="nav-item">
@@ -41,21 +43,29 @@
 
                         }
                         else
-                        {
-                            @* Acá van los botones que ven los dos roles *@
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Menu">Menu principal</a>
-                            </li>
-                        
+                        {@* Acá van los botones que ven los dos roles *@
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Auth" asp-action="Logout">Logout</a>
-                            </li>
-
-                            <li class="nav-item ms-auto">
-                                <a asp-controller="Carrito" asp-action="Index" class="nav-link carrito-link">
-                                    <img src="~/img/carrito.svg" alt="Carrito">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Menu">
+                                    Menu principal
                                 </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Auth" asp-action="Logout">
+                                    Logout
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-auto carrito-contenedor">
+                                <a asp-controller="Carrito" asp-action="Index" class="carrito-link">
+                                    <img src="~/img/carrito.svg" alt="Carrito" width="35" />
+                                </a>
+
+                                @if (cantidad > 0)
+                                {
+                                    <span class="contador">@cantidad</span>
+                                }
                             </li>
 
                             if (lrol == "Administrador")
@@ -90,6 +100,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+  
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

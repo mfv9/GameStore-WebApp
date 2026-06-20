@@ -18,7 +18,10 @@ namespace WebApp.Controllers
             try
             {
                 s.AgregarAlCarrito(id, dlc);
-                
+                TempData["Mensaje"] = "Agregado al carrito";
+
+                HttpContext.Session.SetInt32("CantidadCarrito", s.CarritoActual.Juegos.Count);
+
             }
             catch (Exception e)
             {
@@ -26,7 +29,7 @@ namespace WebApp.Controllers
                 ViewBag.msg = "Error: " + e.Message;
 
             }
-            return RedirectToAction("Index", "Carrito");
+            return RedirectToAction("Index", "VideoJuego");
         }
 
         [HttpPost]
@@ -36,6 +39,7 @@ namespace WebApp.Controllers
             try
             {
                 s.QuitarJuegoDelCarrito(id);
+                HttpContext.Session.SetInt32("CantidadCarrito", s.CarritoActual.Juegos.Count);
             }
             catch (Exception e)
             {

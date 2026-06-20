@@ -14,9 +14,6 @@ namespace DEMO2
         private List<VideoJuego> _juegos = new List<VideoJuego>();
         private List<Compra> _compras = new List<Compra>();
         public Compra CarritoActual { get; set; } = new Compra();
-
-
-
         private Sistema()
         {
             Precarga();

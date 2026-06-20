@@ -1,6 +1,12 @@
 ﻿@using DEMO2
 @model List<VideoJuego>
 
+    @if (TempData["Mensaje"] != null)
+{
+    <div id="mensaje" class="mensaje-exito">
+        @TempData["Mensaje"]
+    </div>
+}
 <div class="row row-cols-1 row-cols-md-5 g-4">
 
     @foreach (var juego in Model)
@@ -38,6 +44,8 @@
                                 <button type="submit">Comprar</button>
                             </p>
                         }
+
+                      
                     </form>
                 </div>
                 <div class="card-footer">
@@ -53,5 +61,7 @@
             </div>
         </div>
     }
+
+    
 
 </div>

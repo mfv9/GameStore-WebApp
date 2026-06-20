@@ -2,8 +2,6 @@
 
     let texto = this.value;
 
-    console.log(texto);
-
     fetch('/VideoJuego/BuscarJuegos?criterio=' + encodeURIComponent(texto))
         .then(response => response.text())
         .then(html => {
