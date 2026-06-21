@@ -1,17 +1,40 @@
 ﻿@using DEMO2
-@model LoginViewModel
-<h1>Mi perfil</h1>
-<div>
-   
-    <dl class="row">
+@model Cliente
 
-        <dt class="col-sm-2">
-            eMAIL
-        </dt>
-        <dd class="col-sm-10">
-            @Model.Email
-        </dd>
-      
+<div class="perfil-container">
+
+    <h1>Mi Perfil</h1>
+
+    <div class="perfil-card">
+
+        <div class="perfil-header">
+            <h2>@Model.Nombre</h2>
+
+            @Html.ActionLink("✏️ Editar perfil", "Edit", new { id = Model.Id }, new { @class = "btn-editar" })
+            @Html.ActionLink("✏️ Cambiar contraseña", "EditPass", new { id = Model.Id }, new { @class = "btn-editar" })
+
+        </div>
+
+        <dl class="perfil-info">
+
+            <dt>Nombre</dt>
+            <dd>@Model.Nombre</dd>
+
+            <dt>Email</dt>
+            <dd>@Model.Email</dd>
+
+            <dt>Contraseña</dt>
+            <dd>***********</dd>
+
+            <dt>Fecha de nacimiento</dt>
+            <dd>@Model.FechNac.ToShortDateString()</dd>
+
+            <dt>Fecha de alta</dt>
+            <dd>@Model.FechaAlta.ToShortDateString()</dd>
+
         </dl>
+
     </div>
+
+</div>
     

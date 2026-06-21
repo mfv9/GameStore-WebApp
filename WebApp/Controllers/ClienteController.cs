@@ -10,7 +10,7 @@ namespace WebApp.Controllers
         Sistema s = Sistema.getInstance();
         public IActionResult Index()
         {
-            return View(s.GetClientes()); 
+            return View(s.GetClientes());
         }
 
         public IActionResult Create()
@@ -58,14 +58,52 @@ namespace WebApp.Controllers
             return View();
         }
 
+        public IActionResult EditPass(int id)
+        {
+            return View(s.FindClientById(id));
+        }
+
+        [HttpPost]
+        public IActionResult EditPass(int id, string passActual, string repetirPass, string nuevaPass)
+        {
+            try
+            {
+                Cliente buscado = s.FindClientById(id);
+                if (buscado.Password != passActual)
+                {
+                    throw new Exception("Su contraseña no coincide");
+                }
+                if (nuevaPass != repetirPass)
+                {
+                    throw new Exception("Su contraseña nueva no coincide");
+
+                }
+                s.ActualizarContrasenia(id, nuevaPass);
+                ViewBag.msg = "Contraseña guardada";
+            }
+            catch (Exception e)
+            {
+                ViewBag.msg = "Error " + e.Message;
+            }
+            return View();
+        }
+
         public IActionResult Details(int id)
         {
             return View(s.FindClientById(id));
         }
 
-        public IActionResult VerMiPerfil(LoginViewModel lvm)
+        public IActionResult VerMiPerfil()
         {
-            return View(lvm);
+            int? id = HttpContext.Session.GetInt32("LogueadoId");
+
+            if (id == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            Cliente buscado = s.FindClientById(id.Value);
+            return View(buscado);
         }
 
         public IActionResult Delete(int id)

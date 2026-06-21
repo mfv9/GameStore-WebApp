@@ -1,0 +1,42 @@
+﻿@using DEMO2
+@model Cliente
+
+<div class="editar-container">
+
+    <div class="editar-card">
+
+        <h1>Editar perfil</h1>
+        <p class="subtitulo">Modificá tu contraseña.</p>
+
+        <form method="post" asp-action="EditPass" asp-controller="Cliente">
+
+            <input asp-for="Id" type="hidden" />
+
+            <div class="form-group">
+                <label>Contraseña actual</label>
+                <input type="text" name="passActual" placeholder="*******" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Contraseña nueva</label>
+                <input type="text" name="nuevaPass" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label>Repita su contraseña nueva</label>
+                <input type="text" name="repetirPass" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Guardar cambios" class="btn-guardar" />
+            </div>
+
+        </form>
+
+        @if (ViewBag.msg != null)
+        {
+            <p class="mensaje">@ViewBag.msg</p>
+        }
+
+    </div>
+</div>

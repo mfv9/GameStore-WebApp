@@ -82,9 +82,17 @@ namespace DEMO2
             {
                 buscado.Nombre = c.Nombre;
                 buscado.Apellido = c.Apellido;
-                buscado.Password = c.Password;
                 buscado.Email = c.Email;
                 buscado.FechNac = c.FechNac;
+            }
+        }
+
+        public void ActualizarContrasenia (int id, string newPass) { 
+            Cliente buscado = FindClientById(id);
+
+            if (buscado != null)
+            {
+                buscado.Password = newPass;
             }
         }
 

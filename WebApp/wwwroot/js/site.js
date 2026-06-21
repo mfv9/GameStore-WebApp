@@ -1,7 +1,4 @@
-﻿
-
-// MENSAJE CARRITO
-
+﻿// MENSAJE CARRITO
 window.onload = function () {
 
     const mensaje = document.getElementById("mensaje");
