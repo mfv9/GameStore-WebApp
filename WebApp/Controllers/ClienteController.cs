@@ -45,10 +45,8 @@ namespace WebApp.Controllers
         {
             try
             {
-
                 s.ActualizarUsuario(c);
                 ViewBag.msg = "Exito";
-
             }
             catch (Exception e)
             {
@@ -128,6 +126,26 @@ namespace WebApp.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+
+        public IActionResult BorrarUsuarios(List<int> ids)
+        {
+            try
+            {
+                s.BorrarUsuarios(ids);
+
+            }
+            catch (Exception e)
+            {
+
+                ViewBag.msg = "Error " + e.Message;
+
+            }
+            return RedirectToAction("Index", "Cliente");
+        }
+
+
 
         public IActionResult Activate(int id)
         {

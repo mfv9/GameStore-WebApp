@@ -18,3 +18,18 @@ window.onload = function () {
     }
 
 };
+
+//CHECKBOXS DELETE
+
+function mostrarBoton() {
+    const checks = document.querySelectorAll(".checkCliente");
+    const boton = document.getElementById("btnBorrar");
+
+    const haySeleccionados = [...checks].some(c => c.checked);
+
+    if (haySeleccionados) {
+        boton.hidden = false;
+    } else {
+        boton.hidden = true;
+    }
+}

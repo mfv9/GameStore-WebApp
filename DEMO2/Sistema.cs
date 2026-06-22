@@ -10,7 +10,7 @@ namespace DEMO2
     {
         private static Sistema instancia = null;
 
-        private List<Cliente> _clientes = new List<Cliente>();
+        private static List<Cliente> _clientes = new List<Cliente>();
         private List<VideoJuego> _juegos = new List<VideoJuego>();
         private List<Compra> _compras = new List<Compra>();
         public Compra CarritoActual { get; set; } = new Compra();
@@ -44,7 +44,7 @@ namespace DEMO2
         {
             _juegos.Add(v);
         }
-        public void AltaCompra(Compra  c)
+        public void AltaCompra(Compra c)
         {
             _compras.Add(c);
         }
@@ -62,6 +62,19 @@ namespace DEMO2
             return null;
         }
 
+        public List<Cliente> GetClientesPorId(int id)
+        {
+            List<Cliente> ret = new List<Cliente>();
+            foreach (Cliente c in _clientes)
+            {
+                if (c.Id == id)
+                {
+                    ret.Add(c);
+                }
+            }
+            return ret;
+        }
+
         public Cliente FindClientByEmail(string email)
         {
             foreach (Cliente c in _clientes)
@@ -73,6 +86,8 @@ namespace DEMO2
             }
             return null;
         }
+
+
 
         public void ActualizarUsuario(Cliente c)
         {
@@ -87,7 +102,8 @@ namespace DEMO2
             }
         }
 
-        public void ActualizarContrasenia (int id, string newPass) { 
+        public void ActualizarContrasenia(int id, string newPass)
+        {
             Cliente buscado = FindClientById(id);
 
             if (buscado != null)
@@ -106,20 +122,26 @@ namespace DEMO2
             }
         }
 
+        public void BorrarUsuarios(List<int> ids)
+        {
+            _clientes.RemoveAll(c => ids.Contains(c.Id));
+        }
+
         public void QuitarJuegoDelCarrito(int id)
         {
             CarritoCompra eliminar = null;
 
             foreach (CarritoCompra cc in CarritoActual.Juegos)
             {
-                if(cc.VideoJuego.Id == id)
+                if (cc.VideoJuego.Id == id)
                 {
                     eliminar = cc;
                     break;
                 }
 
             }
-            if (eliminar != null){
+            if (eliminar != null)
+            {
                 CarritoActual.Juegos.Remove(eliminar);
             }
         }
@@ -188,9 +210,9 @@ namespace DEMO2
 
         public VideoJuego FindJuegoPor(int id)
         {
-            foreach(VideoJuego vj in _juegos)
+            foreach (VideoJuego vj in _juegos)
             {
-                if(vj.Id == id)
+                if (vj.Id == id)
                 {
                     return vj;
                 }
@@ -201,14 +223,14 @@ namespace DEMO2
         public void AgregarAlCarrito(int id, bool dlc)
         {
             VideoJuego juego = FindJuegoPor(id);
-            if(juego!=null)
+            if (juego != null)
             {
                 CarritoCompra item = new CarritoCompra
                 {
                     VideoJuego = juego,
                     CompraDLC = dlc,
-                  
-              
+
+
                 };
                 CarritoActual.Juegos.Add(item);
             }

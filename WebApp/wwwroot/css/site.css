@@ -19,7 +19,10 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: beige
+    background-color: #0b0f1a;
+    color: #eaeaea;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
@@ -99,9 +102,6 @@ body {
 
 /*MENU CSS USUARIO LOG*/
 
-/*body {
-    background: #111827;
-}*/
 
 .hero {
     background: linear-gradient(135deg,#4f46e5,#1e3a8a);
@@ -412,3 +412,93 @@ body {
         padding: 25px;
     }
 }
+
+
+
+/*INDEX MENU USUARIO ANONIMO*/
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.8s ease-in-out;
+}
+
+    /* Usuario logueado */
+    .hero.logged {
+        background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e');
+        animation: bgZoom 25s ease-in-out infinite alternate;
+    }
+
+    .hero.guest {
+        animation: guestMove 25s ease-in-out infinite alternate;
+        filter: brightness(0.9) contrast(1.1);
+    }
+@keyframes guestMove {
+    0% {
+        background-position: center;
+        transform: scale(1);
+    }
+
+    50% {
+        background-position: top;
+    }
+
+    100% {
+        background-position: bottom;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes bgZoom {
+    0% {
+        transform: scale(1);
+        background-position: center;
+    }
+
+    50% {
+        background-position: top;
+    }
+
+    70% {
+        transform: scale(1.15);
+        background-position: bottom;
+    }
+}
+
+   
+
+    /* Overlay oscuro */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient( circle at center, rgba(0,0,0,0.4), rgba(0,0,0,0.85) );
+    pointer-events: none;
+}
+
+.hero-content,
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+/* contenido arriba */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+}
+
+    /* Título estilo gamer */
+    .hero-content h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    }

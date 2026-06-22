@@ -2,28 +2,38 @@
     ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center mt-5">
-    <h1 class="display-4">🎮 Bienvenido a GameStore</h1>
+<div class="hero guest" style="background-image:url('https://images.unsplash.com/photo-1605901309584-818e25960a8f');">
 
-    <p class="lead mt-3">
-        Gestiona y compra tus videojuegos favoritos.
-    </p>
+    <div class="overlay"></div>
 
-    <div class="mt-4">
-        <a asp-controller="Auth"
-           asp-action="Login"
-           class="btn btn-primary btn-lg me-2">
-            Iniciar Sesión
-        </a>
+    <div class="content text-center">
 
-        <a asp-controller="Cliente"
-           asp-action="Create"
-           class="btn btn-outline-secondary btn-lg">
-            Registrarse
-        </a>
+        <h1 class="display-4 text-white fw-bold">
+            🎮 GameStore
+        </h1>
+
+        <p class="lead text-light mt-3">
+            Tu universo de videojuegos en un solo lugar
+        </p>
+
+        <div class="mt-4">
+            <a asp-controller="Auth"
+               asp-action="Login"
+               class="btn btn-primary btn-lg me-2">
+                Iniciar Sesión
+            </a>
+
+            <a asp-controller="Cliente"
+               asp-action="Create"
+               class="btn btn-outline-light btn-lg">
+                Registrarse
+            </a>
+        </div>
+
+        <p class="mt-4 text-secondary">
+            Explora, compra y gestiona tus juegos favoritos
+        </p>
+
     </div>
 
-    <p class="mt-4 text-muted">
-        ¿No tienes una cuenta? Regístrate para comenzar.
-    </p>
 </div>

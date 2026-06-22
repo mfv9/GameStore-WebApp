@@ -1,67 +1,110 @@
 ﻿@using DEMO2
 @model List<Cliente>
-<h1>Lista clientes</h1>
 
-<p>
-    <a asp-action="Create">Crear usuario prueba</a>
-</p>
+<div class="container py-4">
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                ID
-            </th>
-            <th>
-                Nombre
-            </th>
-            <th>
-                Apellido
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                Fecha de nacimiento
-            </th>
-            <th>
-                Esta activo
-            </th>
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold mb-0">Clientes</h2>
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
+        <button type="submit"
+                form="formBorrar"
+                id="btnBorrar"
+                class="btn btn-danger btn-sm shadow-sm"
+                hidden>
+            🗑 Eliminar seleccionados
+        </button>
+    </div>
 
-                <td>
-                    @item.Id
-                </td>
-                <td>
-                    @item.Nombre
-                </td>
-                <td>
-                    @item.Apellido
-                </td>
-                <td>
-                    @item.Email
-                </td>
-                <td>
-                    @item.FechNac
-                </td>
-                <td>
-                    @item.EsActivo
-                </td>
+    <!-- Card -->
+    <div class="card border-0 shadow-sm">
 
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.Id })
-                    @Html.ActionLink("Detalles", "Details", new { id = item.Id })
-                    @Html.ActionLink("Desactivar", "Delete", new { id = item.Id })
-                    @Html.ActionLink("Activar", "Activate", new { id = item.Id })
+        <form id="formBorrar"
+              method="post"
+              asp-action="BorrarUsuarios"
+              asp-controller="Cliente">
 
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            <div class="table-responsive">
+
+                <table class="table table-hover align-middle mb-0">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th style="width:40px;"></th>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+                            <th>Nacimiento</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    <input class="form-check-input checkCliente"
+                                           type="checkbox"
+                                           name="ids"
+                                           value="@item.Id"
+                                           onchange="mostrarBoton()" />
+                                </td>
+
+                                <td class="text-muted">#@item.Id</td>
+
+                                <td class="fw-semibold">@item.Nombre</td>
+                                <td>@item.Apellido</td>
+                                <td>@item.Email</td>
+                                <td>@item.FechNac</td>
+
+                                <td>
+                                    @if (item.EsActivo)
+                                    {
+                                        <span class="badge bg-success">Activo</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Inactivo</span>
+                                    }
+                                </td>
+
+                                <td class="text-nowrap">
+
+                                    <a class="btn btn-sm btn-outline-primary"
+                                       href="@Url.Action("Edit", new { id = item.Id })">
+                                        Editar
+                                    </a>
+
+                                    <a class="btn btn-sm btn-outline-info"
+                                       href="@Url.Action("Details", new { id = item.Id })">
+                                        Ver
+                                    </a>
+
+                                    <a class="btn btn-sm btn-outline-warning"
+                                       href="@Url.Action("Delete", new { id = item.Id })">
+                                        Desactivar
+                                    </a>
+
+                                    <a class="btn btn-sm btn-outline-success"
+                                       href="@Url.Action("Activate", new { id = item.Id })">
+                                        Activar
+                                    </a>
+
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
