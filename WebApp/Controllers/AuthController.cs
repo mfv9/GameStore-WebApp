@@ -29,11 +29,12 @@ namespace WebApp.Controllers
 
                 if (buscado.Rol == "Administrador")
                 {
-                    return RedirectToAction("Index", "VideoJuego");
+                    return RedirectToAction("Menu", "Home");
+
                 }
                 else
                 {
-                    return RedirectToAction("Menu", "Home");
+                    return RedirectToAction("Index", "VideoJuego");
 
                 }
 

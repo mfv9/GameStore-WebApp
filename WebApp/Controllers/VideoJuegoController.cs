@@ -25,7 +25,7 @@ namespace WebApp.Controllers
         public IActionResult BuscarJuegos(string criterio)
         {
             List<VideoJuego> juegos = s.BuscarJuego(criterio);
-            return PartialView("BuscarJuegos", juegos);
+            return PartialView("_ListaJuegos", juegos);
         }
     }
 }

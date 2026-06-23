@@ -8,23 +8,6 @@ namespace WebApp.Controllers
     {
         public IActionResult Index()
         {
-
-            int? lid = HttpContext.Session.GetInt32("LogueadoId");
-
-            if (lid != null)
-            {
-
-                string nom = HttpContext.Session.GetString("LogueadoNombre");
-                string ape = HttpContext.Session.GetString("LogueadoApellido");
-
-                ViewBag.msgBienvenida = $"Hola {nom} {ape} ";
-            }
-            else
-            {
-                ViewBag.msgBienvenida = $"Hola debe iniciar sesión";
-
-            }
-
             return View();
         }
 

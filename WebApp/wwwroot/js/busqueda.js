@@ -2,7 +2,7 @@
 
     let texto = this.value;
 
-    fetch('/VideoJuego/BuscarJuegos?criterio=' + encodeURIComponent(texto))
+    fetch('/VideoJuego/_BuscarJuegos?criterio=' + encodeURIComponent(texto))
         .then(response => response.text())
         .then(html => {
             console.log(html);

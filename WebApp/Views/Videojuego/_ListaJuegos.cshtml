@@ -1,0 +1,67 @@
+﻿@using DEMO2
+@model List<VideoJuego>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+
+    @foreach (var juego in Model)
+    {
+        <div class="col">
+
+            <div class="game-card">
+
+                <div class="game-img">
+                    <img src="img/@juego.Foto" alt="@juego.Nombre">
+                </div>
+
+                <div class="game-body">
+
+                    <h4>@juego.Nombre</h4>
+
+                    @if (Context.Session.GetInt32("LogueadoId") != null)
+                    {
+                        <div class="precio">
+                            $@juego.Precio
+                        </div>
+
+                        <form method="post"
+                              asp-action="Comprar"
+                              asp-controller="Carrito">
+
+                            <input type="hidden" name="id" value="@juego.Id" />
+
+                            @if (juego.DLC)
+                            {
+                                <div class="dlc-box">
+
+                                    @if (juego is Virtual v)
+                                    {
+                                        <span>DLC Premium (+$@v.CalcularPrecioRealSiLlevaOnoDlc(v.DLC))</span>
+                                    }
+                                    else if (juego is Fisico f)
+                                    {
+                                        <span>DLC Premium (+$@f.CalcularPrecioRealSiLlevaOnoDlc(f.DLC))</span>
+                                    }
+
+                                    <label class="switch">
+                                        <input type="checkbox" name="dlc" value="true">
+                                        <span class="slider"></span>
+                                    </label>
+
+                                </div>
+                            }
+
+                            <button class="btn-comprar">
+                                🛒 Comprar
+                            </button>
+
+                        </form>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>

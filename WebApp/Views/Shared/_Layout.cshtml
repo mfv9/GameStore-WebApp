@@ -4,8 +4,6 @@
     int cantidad = Context.Session.GetInt32("CantidadCarrito") ?? 0;
 }
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApp</a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -33,7 +31,7 @@
                         @if (lid == null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Iniciar sesion" asp-action="Index">Home</a>
                             </li>
                             <a class="nav-link text-dark" asp-area="" asp-controller="VideoJuego" asp-action="Index">Ver juegos</a>
 
@@ -69,7 +67,7 @@
                                 @* acá van los botones que ve solo el cliente *@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="VerMiPerfil">
-                                       Ver perfil
+                                        Ver perfil
                                     </a>
                                 </li>
                                 <li class="nav-item ms-auto carrito-contenedor">
