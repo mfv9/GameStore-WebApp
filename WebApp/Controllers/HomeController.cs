@@ -13,7 +13,12 @@ namespace WebApp.Controllers
 
         public IActionResult Menu()
         {
+            int? id = HttpContext.Session.GetInt32("LogueadoId");
 
+            if (id == null)
+            {
+                return RedirectToAction("Login", "Auth");
+            }
             return View();
         }
         public IActionResult Privacy()

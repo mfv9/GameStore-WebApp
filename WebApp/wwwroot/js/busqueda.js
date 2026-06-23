@@ -1,11 +1,30 @@
-﻿document.getElementById("buscador").addEventListener("keyup", function () {
+﻿document.addEventListener("DOMContentLoaded", function () {
 
-    let texto = this.value;
+    const buscador = document.getElementById("buscador");
 
-    fetch('/VideoJuego/_BuscarJuegos?criterio=' + encodeURIComponent(texto))
-        .then(response => response.text())
-        .then(html => {
-            console.log(html);
-            document.getElementById("resultados").innerHTML = html;
-        });
+    buscador.addEventListener("keyup", function () {
+
+        let texto = this.value;
+
+        // 👇 SI ESTÁ VACÍO → volver a listar todo
+        if (texto.trim() === "") {
+
+            fetch('/VideoJuego/ListaCompleta') // o Index parcial
+                .then(r => r.text())
+                .then(html => {
+                    document.getElementById("resultados").innerHTML = html;
+                });
+
+            return;
+        }
+
+        // 👇 búsqueda normal
+        fetch(urlBuscar + '?criterio=' + encodeURIComponent(texto))
+            .then(r => r.text())
+            .then(html => {
+                document.getElementById("resultados").innerHTML = html;
+            });
+
+    });
+
 });
