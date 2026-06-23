@@ -12,13 +12,8 @@ namespace DEMO2
         public string Password { get; set; }
         public DateTime FechaAlta { get; set; }
         public DateTime FechNac { get; set; }
-
         public string Rol { get; set; }
-
         public bool EsActivo { get; set; }
-
-
-       
 
         public Cliente()
         {
@@ -68,15 +63,11 @@ namespace DEMO2
                 throw new Exception("Apellido vacio");
 
             }
-
             if(FechNac > DateTime.Now)
             {
                 throw new Exception("Verificra fecha de nacimiento");
             }
         }
-
-      
-
         public bool ValidarEmail(string email)
         {
             int posArroba = email.IndexOf("@");
@@ -87,7 +78,6 @@ namespace DEMO2
             }
             return false;
         }
-
         public override bool Equals(object? obj)
         {
             return obj is Cliente cliente &&

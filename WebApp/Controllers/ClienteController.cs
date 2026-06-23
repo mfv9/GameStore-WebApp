@@ -19,18 +19,21 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-
-        public IActionResult Create(Cliente c, string mailUser, string mailRep)
+        public IActionResult Create(Cliente c, string mailRep)
         {
             try
             {
-                if(mailUser != mailRep)
+                if (c.Email != mailRep)
                 {
                     throw new Exception("Mail no coincide");
                 }
-                s.AltaCliente(c);
-                ViewBag.msg = "Registro correcto";
-                return RedirectToAction("Login", "Auth");
+                else
+                {
+                    s.AltaCliente(c);
+                    ViewBag.msg = "Registro correcto";
+                    return RedirectToAction("Login", "Auth");
+                }
+
             }
             catch (Exception e)
             {
