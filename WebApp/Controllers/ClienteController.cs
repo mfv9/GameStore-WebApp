@@ -20,12 +20,17 @@ namespace WebApp.Controllers
 
         [HttpPost]
 
-        public IActionResult Create(Cliente c)
+        public IActionResult Create(Cliente c, string mailUser, string mailRep)
         {
             try
             {
+                if(mailUser != mailRep)
+                {
+                    throw new Exception("Mail no coincide");
+                }
                 s.AltaCliente(c);
                 ViewBag.msg = "Registro correcto";
+                return RedirectToAction("Login", "Auth");
             }
             catch (Exception e)
             {

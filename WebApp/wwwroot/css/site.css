@@ -449,7 +449,7 @@ body {
         background-position: top;
     }
 
-    100% {
+    55% {
         background-position: bottom;
         transform: scale(1.1);
     }
@@ -465,7 +465,7 @@ body {
         background-position: top;
     }
 
-    70% {
+    55% {
         transform: scale(1.15);
         background-position: bottom;
     }
@@ -502,3 +502,121 @@ body {
         font-weight: 800;
         text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
     }
+
+
+
+    /*LOGIN USUARIO ANONIMO*/
+
+
+
+.login-container {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#0b0616,#120027,#1b1035);
+}
+
+
+
+.login-card {
+    width: 420px;
+    padding: 40px;
+    border-radius: 18px;
+    background: rgba(25,25,35,.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(173,102,255,.35);
+    box-shadow: 0 0 15px rgba(170,0,255,.25), 0 0 40px rgba(130,0,255,.15);
+    color: white;
+}
+
+/* Titulo */
+
+.login-title {
+    text-align: center;
+    margin-bottom: 35px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #d59bff;
+    text-shadow: 0 0 5px #d59bff, 0 0 10px #c04cff, 0 0 25px #8b00ff;
+}
+
+/* Labels */
+
+.login-card label {
+    color: #d6b3ff;
+    margin-bottom: 8px;
+}
+
+/* Inputs */
+
+.gamer-input {
+    background: #1c1c28;
+    border: 2px solid #7b2cff;
+    color: white;
+    transition: .3s;
+}
+
+    .gamer-input:focus {
+        background: #222236;
+        color: white;
+        border-color: #b84cff;
+        box-shadow: 0 0 8px #b84cff, 0 0 18px #9d00ff;
+        outline: none;
+    }
+
+/* Botón */
+
+.gamer-btn {
+    background: #8a2be2;
+    border: none;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 12px;
+    border-radius: 10px;
+    transition: .3s;
+    box-shadow: 0 0 10px #8a2be2, 0 0 25px #8a2be2;
+}
+
+    .gamer-btn:hover {
+        background: #a84cff;
+        transform: translateY(-2px);
+        box-shadow: 0 0 12px #c04cff, 0 0 25px #c04cff, 0 0 45px #8a2be2;
+    }
+
+/* Mensaje */
+
+.mensaje-error {
+    text-align: center;
+    color: #ff5b9d;
+    font-weight: bold;
+}
+
+.gamer-btn-outline {
+    background: transparent;
+    color: #d59bff;
+    border: 2px solid #8a2be2;
+    box-shadow: 0 0 10px #8a2be2;
+    transition: .3s;
+}
+
+    .gamer-btn-outline:hover {
+        background: #8a2be2;
+        color: white;
+        box-shadow: 0 0 15px #c04cff, 0 0 35px #8a2be2;
+        transform: translateY(-2px);
+    }
+
+    /*REGISTER CREATE*/
+
+.login-card-register {
+    width: 450px;
+    max-width: 95%;
+    padding: 40px;
+    border-radius: 18px;
+    background: rgba(25,25,35,.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(173,102,255,.35);
+    box-shadow: 0 0 15px rgba(170,0,255,.25), 0 0 40px rgba(130,0,255,.15);
+}

@@ -58,7 +58,6 @@ namespace DEMO2
 
             }
           
-
             if (!ValidarEmail(Email))
             {
                 throw new Exception("Mail arroba mal");
@@ -69,7 +68,11 @@ namespace DEMO2
                 throw new Exception("Apellido vacio");
 
             }
-           
+
+            if(FechNac > DateTime.Now)
+            {
+                throw new Exception("Verificra fecha de nacimiento");
+            }
         }
 
       

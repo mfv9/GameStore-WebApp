@@ -1,46 +1,57 @@
 ﻿@using DEMO2
 @model Cliente
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="login-container">
+
+    <div class="login-card-register">
+
+        <h1 class="login-title">👤 CREATE YOUR ACCOUNT</h1>
+
         <form method="post">
-            <div class="form-group">
-                <label class="control-label">Nombre</label>
-                <input asp-for="Nombre" class="form-control" />
 
+            <div class="mb-3">
+                <label>Nombre</label>
+                <input asp-for="Nombre" class="form-control gamer-input" />
             </div>
 
-            <div class="form-group">
-                <label class="control-label">Apellido</label>
-                <input asp-for="Apellido" class="form-control" />
-
+            <div class="mb-3">
+                <label>Apellido</label>
+                <input asp-for="Apellido" class="form-control gamer-input" />
             </div>
 
-            <div class="form-group">
-                <label class="control-label">Email</label>
-                <input asp-for="Email" class="form-control" />
-
+            <div class="mb-3">
+                <label>Email</label>
+                <input asp-for="Email" name="mailUser" class="form-control gamer-input" />
             </div>
 
-            <div class="form-group">
-                <label class="control-label">Password</label>
-                <input asp-for="Password" type="password" class="form-control" />
-
+            <div class="mb-3">
+                <label>Email</label>
+                <input asp-for="Email" name="mailRep" class="form-control gamer-input" />
             </div>
 
-          
-
-            <div class="form-group">
-                <label class="control-label">Fecha Nacimiento</label>
-                <input asp-for="FechNac" type="Date" class="form-control" />
-
+            <div class="mb-3">
+                <label>Password</label>
+                <input asp-for="Password" type="password" class="form-control gamer-input" />
             </div>
-          
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+
+            <div class="mb-4">
+                <label>Fecha de Nacimiento</label>
+                <input asp-for="FechNac" type="date" class="form-control gamer-input" />
             </div>
+
+            <button type="submit" class="btn gamer-btn w-100">
+                🎮 Registrarse
+            </button>
+
+            
         </form>
+
+        @if (ViewBag.msg != null)
+        {
+            <p class="mensaje-error mt-3">@ViewBag.msg</p>
+        }
+
     </div>
+    
+
 </div>
-<p>@ViewBag.msg</p>
