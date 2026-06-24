@@ -219,6 +219,21 @@ namespace DEMO2
             }
             return null;
         }
+        public List<Cliente> GetJuegosPorCliente(int id)
+        {
+            List<VideoJuego> ret = new List<VideoJuego>();
+            foreach (Cliente c in _clientes)
+            {
+                if (c.Id == id)
+                {
+                    ret.Add(c);
+                }
+            }
+            return ret;
+
+        }
+
+
 
         public void AgregarAlCarrito(int id, bool dlc)
         {
@@ -235,6 +250,8 @@ namespace DEMO2
                 CarritoActual.Juegos.Add(item);
             }
         }
+
+     
         private void Precarga()
         {
 

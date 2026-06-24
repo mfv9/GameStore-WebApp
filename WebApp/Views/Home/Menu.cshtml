@@ -1,4 +1,24 @@
-﻿<div class="hero logged">
+﻿@{
+
+    string lrol = Context.Session.GetString("LogueadoRol");
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - webapp</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/webapp.styles.css" asp-append-version="true" />
+</head>
+
+
+
+<div class="hero logged">
     <div class="hero-content">
         <h1>🎮 ¡Bienvenido a GameStore!</h1>
         <p>
@@ -9,11 +29,14 @@
             <a asp-controller="VideoJuego" asp-action="Index" class="btn-primary-custom">
                 Explorar juegos
             </a>
+            @if (lrol == "Administrador")
+            {
+                <a asp-controller="Cliente" asp-action="Index" class="btn-primary-custom">
+                    Ver clientes
+                </a>
+            }
 
-            <a asp-controller="VideoJuego" asp-action="Buscar" class="btn-primary-custom">
-                Buscar juegos
-            </a>
-
+           
             <a asp-controller="Carrito" asp-action="Index" class="btn-secondary-custom">
                 Ver carrito
             </a>

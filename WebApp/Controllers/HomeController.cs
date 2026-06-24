@@ -17,7 +17,7 @@ namespace WebApp.Controllers
 
             if (id == null)
             {
-                return RedirectToAction("Login", "Auth");
+                return RedirectToAction("NoPermitido", "Auth");
             }
             return View();
         }

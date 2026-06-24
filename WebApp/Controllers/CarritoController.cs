@@ -13,7 +13,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Comprar(int id, bool dlc)
+        public IActionResult AgregarCarrito(int id, bool dlc)
         {
             try
             {
@@ -46,6 +46,12 @@ namespace WebApp.Controllers
                 ViewBag.msg = "Error: " + e.Message;
             }
             return RedirectToAction("Index", "Carrito");
+        }
+
+        [HttpPost]
+        public IActionResult Comprar(int game)
+        {
+            CarritoCompra juegos = s.GetJuegosPor(game);
         }
 
     }

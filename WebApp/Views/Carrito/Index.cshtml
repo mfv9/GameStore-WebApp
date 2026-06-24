@@ -43,4 +43,9 @@ else
     <h4>
         Total: $@Model.Sum(c => c.VideoJuego.CalcularPrecioRealSiLlevaOnoDlc(c.CompraDLC))
     </h4>
+    <form method="post" asp-action="Comprar" asp-controller="Carrito">
+        <input type="hidden"  name="gameIds" value="" />
+        <button type="submit" class="btn-comprar">Comprar</button>
+    </form>
+
 }

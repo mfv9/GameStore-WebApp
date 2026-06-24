@@ -15,12 +15,15 @@ namespace DEMO2
         public string Rol { get; set; }
         public bool EsActivo { get; set; }
 
+        public List<VideoJuego> MisCompras { get; set; }
+
         public Cliente()
         {
             Id = UltimoId++;
             Rol = "Cliente";
             FechaAlta = DateTime.Now;
             EsActivo = true;
+            MisCompras = new List<VideoJuego>();
         }
 
         public Cliente(string nombre, string apellido, string email, string pass, DateTime fecha)
