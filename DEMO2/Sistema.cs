@@ -219,19 +219,7 @@ namespace DEMO2
             }
             return null;
         }
-        public List<Cliente> GetJuegosPorCliente(int id)
-        {
-            List<VideoJuego> ret = new List<VideoJuego>();
-            foreach (Cliente c in _clientes)
-            {
-                if (c.Id == id)
-                {
-                    ret.Add(c);
-                }
-            }
-            return ret;
-
-        }
+  
 
 
 
@@ -251,7 +239,47 @@ namespace DEMO2
             }
         }
 
-     
+        public Compra FindCompraBy(int id)
+        {
+            foreach (Compra c in _compras)
+            {
+                if (c.Id == id)
+                {
+                    return c;
+                }
+            }
+            return null;
+        }
+        public List<Compra> GetComprasBy(int id)
+        {
+            List<Compra> ret = new List<Compra>();
+            foreach (Compra c in _compras)
+            {
+                if (c.Id == id)
+                {
+                    ret.Add(c);
+                }
+            }
+            return ret;
+        }
+
+        public List<Compra> VerComprasPorCliente(int id)
+        {
+            List<Compra> ret = new List<Compra>();
+        
+            Compra compraBuscada = FindCompraBy(id);
+
+            foreach(Compra compra in _compras)
+            {
+                if(compra.Cliente.Id == compraBuscada.Id)
+                {
+                    ret.Add(compra);
+                }
+            }
+            return ret;
+                
+        }
+
         private void Precarga()
         {
 
@@ -354,6 +382,27 @@ namespace DEMO2
 
             Cliente c1 = new Cliente("Mateo", "Fernandez", "pepe@gmail.com", "11", DateTime.Now.AddYears(-12));
             AltaCliente(c1);
+
+
+            List<CarritoCompra> juegosCompra1 = new List<CarritoCompra>()
+            {
+                 new CarritoCompra(j1),
+                 new CarritoCompra(j2)
+             };
+            Compra compra1 = new Compra(c1, juegosCompra1, j1.Precio + j2.Precio);
+            AltaCompra(compra1);
+
+            // Compra 2
+            List<CarritoCompra> juegosCompra2 = new List<CarritoCompra>()
+{
+    new CarritoCompra(j3),
+    new CarritoCompra(j4)
+};
+
+            Compra compra2 = new Compra(c1, juegosCompra2, j3.Precio + j4.Precio);
+            AltaCompra(compra2);
+
+
 
 
 

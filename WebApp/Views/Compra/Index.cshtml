@@ -1,5 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using DEMO2
+@model List<Compra>
+
+<h2>🎮 Mis Compras</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No has realizado compras todavía.
+    </div>
+}
+else
+{
+    @foreach (Compra compra in Model)
+    {
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>Compra #@compra.Id</strong>
+            </div>
+
+            <div class="card-body">
+                <p><strong>Fecha:</strong> @compra.Fecha.ToString("dd/MM/yyyy")</p>
+                <p><strong>Total:</strong> $@compra.Total</p>
+
+                <h5>Juegos comprados</h5>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Juego</th>
+                            <th>DLC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (CarritoCompra item in compra.Juegos)
+                        {
+                            <tr>
+                                <td>@item.VideoJuego.Nombre</td>
+                                <td>
+                                    @(item.CompraDLC ? "✅ Sí" : "❌ No")
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
 }

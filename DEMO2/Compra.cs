@@ -18,12 +18,13 @@ namespace DEMO2
         public List<CarritoCompra> Juegos { get; set; } = new();
         public decimal PrecioFinalPagado { get; set; } = 0;
 
-        public Compra(Cliente c, decimal total)
+        public Compra(Cliente c, List<CarritoCompra> games, decimal total)
         {
             Id = _ultimoId++;
-
+            Juegos = games;
             Fecha = DateTime.Now;
             Cliente = c;
+            Total = total;
 
         }
 

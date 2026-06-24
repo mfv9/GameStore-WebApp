@@ -9,6 +9,16 @@ namespace DEMO2
         public VideoJuego VideoJuego { get; set; }
         public bool CompraDLC { get; set; }
 
+        public CarritoCompra(VideoJuego vj)
+        {
+            VideoJuego = vj;
+
+        }
+
+        public CarritoCompra()
+        {
+
+        }
         public decimal CalcularPrecioVideoJuego()
         {
             return VideoJuego.CalcularPrecioRealSiLlevaOnoDlc(CompraDLC);

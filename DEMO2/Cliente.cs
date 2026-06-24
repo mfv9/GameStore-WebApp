@@ -15,7 +15,7 @@ namespace DEMO2
         public string Rol { get; set; }
         public bool EsActivo { get; set; }
 
-        public List<VideoJuego> MisCompras { get; set; }
+        public List<VideoJuego> MisCompras { get; set; } = new();
 
         public Cliente()
         {
@@ -35,6 +35,8 @@ namespace DEMO2
             Password = pass;
             FechNac = fecha;
             EsActivo = true;
+            MisCompras = new List<VideoJuego>();
+
             Rol = "Cliente";
         }
          

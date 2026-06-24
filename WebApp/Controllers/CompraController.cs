@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DEMO2;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Controllers
 {
     public class CompraController : Controller
     {
+        Sistema s = Sistema.getInstance();
         public IActionResult Index()
         {
-            return View();
+            int lid = HttpContext.Session.GetInt32("LogueadoId").Value;
+            return View(s.VerComprasPorCliente(lid));
         }
     }
 }

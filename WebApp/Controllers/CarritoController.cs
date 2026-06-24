@@ -48,11 +48,6 @@ namespace WebApp.Controllers
             return RedirectToAction("Index", "Carrito");
         }
 
-        [HttpPost]
-        public IActionResult Comprar(int game)
-        {
-            CarritoCompra juegos = s.GetJuegosPor(game);
-        }
 
     }
 }
