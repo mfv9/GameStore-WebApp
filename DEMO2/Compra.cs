@@ -6,7 +6,7 @@ namespace DEMO2
 {
     public class Compra
     {
-        private static int _ultimoId = 1;
+        private static int _ultimoId = 0;
         public int Id { get; set; }
 
         public DateTime Fecha { get; set; }

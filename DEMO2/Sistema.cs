@@ -267,11 +267,11 @@ namespace DEMO2
         {
             List<Compra> ret = new List<Compra>();
         
-            Compra compraBuscada = FindCompraBy(id);
+           
 
             foreach(Compra compra in _compras)
             {
-                if(compra.Cliente.Id == compraBuscada.Id)
+                if(compra.Cliente.Id == id)
                 {
                     ret.Add(compra);
                 }
@@ -283,6 +283,7 @@ namespace DEMO2
         private void Precarga()
         {
 
+            #region
             Fisico j1 = new Fisico();
             j1.Nombre = "Apex Legends";
             j1.Precio = 40;
@@ -383,6 +384,10 @@ namespace DEMO2
             Cliente c1 = new Cliente("Mateo", "Fernandez", "pepe@gmail.com", "11", DateTime.Now.AddYears(-12));
             AltaCliente(c1);
 
+            #endregion
+
+            //PRECARGA COMPRAS
+            #region
 
             List<CarritoCompra> juegosCompra1 = new List<CarritoCompra>()
             {
@@ -404,7 +409,7 @@ namespace DEMO2
 
 
 
-
+            #endregion
 
         }
     }
