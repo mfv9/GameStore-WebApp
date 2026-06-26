@@ -32,6 +32,26 @@ namespace WebApp.Controllers
             return RedirectToAction("Index", "VideoJuego");
         }
 
+        //[HttpPost]
+        //public IActionResult Comprar(int id, bool dlc)
+        //{
+        //    try
+        //    {
+        //        s.AgregarAlCarrito(id, dlc);
+        //        TempData["Mensaje"] = "Agregado al carrito";
+
+        //        HttpContext.Session.SetInt32("CantidadCarrito", s.CarritoActual.Juegos.Count);
+
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //        ViewBag.msg = "Error: " + e.Message;
+
+        //    }
+        //    return RedirectToAction("Index", "VideoJuego");
+        //}
+
         [HttpPost]
 
         public IActionResult Delete(int id)

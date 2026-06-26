@@ -8,6 +8,11 @@ namespace WebApp.Controllers
         Sistema s = Sistema.getInstance();
         public IActionResult Index()
         {
+            return View(s.GetCompras());
+        }
+
+        public IActionResult VerComprasClienteLogueado()
+        {
             int lid = HttpContext.Session.GetInt32("LogueadoId").Value;
             return View(s.VerComprasPorCliente(lid));
         }

@@ -239,6 +239,8 @@ namespace DEMO2
             }
         }
 
+
+
         public Compra FindCompraBy(int id)
         {
             foreach (Compra c in _compras)
@@ -267,8 +269,6 @@ namespace DEMO2
         {
             List<Compra> ret = new List<Compra>();
         
-           
-
             foreach(Compra compra in _compras)
             {
                 if(compra.Cliente.Id == id)
@@ -280,6 +280,7 @@ namespace DEMO2
                 
         }
 
+        #region
         private void Precarga()
         {
 
@@ -414,3 +415,5 @@ namespace DEMO2
         }
     }
 }
+
+    #endregion 

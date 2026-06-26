@@ -34,14 +34,21 @@
                 <a asp-controller="Cliente" asp-action="Index" class="btn-primary-custom">
                     Ver clientes
                 </a>
+                <a asp-controller="Compra" asp-action="Index" class="btn-primary-custom">
+                    Ver compras
+                </a>
+            }
+            else if (lrol == "Cliente")
+            {
+                <a asp-controller="Compra" asp-action="VerComprasClienteLogueado" class="btn-primary-custom">
+                    Mis compras
+                </a>
+                <a asp-controller="Carrito" asp-action="Index" class="btn-primary-custom">
+                    Ver carrito
+                </a>
             }
 
-            <a asp-controller="Compra" asp-action="Index" class="btn-secondary-custom">
-                Mis compras
-            </a>
-            <a asp-controller="Carrito" asp-action="Index" class="btn-secondary-custom">
-                Ver carrito
-            </a>
+        
         </div>
     </div>
 </div>

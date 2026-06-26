@@ -23,7 +23,7 @@ namespace DEMO2
             Rol = "Cliente";
             FechaAlta = DateTime.Now;
             EsActivo = true;
-            MisCompras = new List<VideoJuego>();
+            
         }
 
         public Cliente(string nombre, string apellido, string email, string pass, DateTime fecha)
@@ -36,7 +36,6 @@ namespace DEMO2
             FechNac = fecha;
             EsActivo = true;
             MisCompras = new List<VideoJuego>();
-
             Rol = "Cliente";
         }
          
