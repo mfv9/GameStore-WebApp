@@ -239,6 +239,16 @@ namespace DEMO2
             }
         }
 
+        //public void AgregarJuegoListaCompras(int id)
+        //{
+        //    List<Compra> ret = new List<Compra>();
+
+        //    Cliente buscado = FindClientById(id);
+        //   foreach(Compra c in CarritoActual)
+        //    {
+
+        //    }
+        //}
 
 
         public Compra FindCompraBy(int id)

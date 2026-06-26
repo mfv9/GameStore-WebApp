@@ -1,5 +1,11 @@
 ﻿@model LoginViewModel
 
+@if (TempData["MsjRegister"] != null)
+{
+    <div id="mensaje" class="mensaje-exito">
+        @TempData["MsjRegister"]
+    </div>
+}
 <div class="login-container">
 
     <div class="login-card">

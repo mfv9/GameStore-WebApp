@@ -35,7 +35,7 @@ namespace DEMO2
             Password = pass;
             FechNac = fecha;
             EsActivo = true;
-            MisCompras = new List<VideoJuego>();
+          
             Rol = "Cliente";
         }
          

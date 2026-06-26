@@ -30,7 +30,7 @@ namespace WebApp.Controllers
                 else
                 {
                     s.AltaCliente(c);
-                    ViewBag.msg = "Registro correcto";
+                    TempData["MsjRegister"] = "Cuenta creada correctamente";
                     return RedirectToAction("Login", "Auth");
                 }
 
