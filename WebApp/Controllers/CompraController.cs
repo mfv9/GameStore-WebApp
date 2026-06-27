@@ -11,7 +11,7 @@ namespace WebApp.Controllers
             return View(s.GetCompras());
         }
 
-        public IActionResult VerComprasClienteLogueado()
+        public IActionResult MisCompras()
         {
             int lid = HttpContext.Session.GetInt32("LogueadoId").Value;
             return View(s.VerComprasPorCliente(lid));

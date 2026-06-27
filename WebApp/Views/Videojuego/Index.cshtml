@@ -7,6 +7,12 @@
         @TempData["Mensaje"]
     </div>
 }
+@if (TempData["MsjCompra"] != null)
+{
+    <div id="mensaje" class="mensaje-exito">
+        @TempData["MsjCompra"]
+    </div>
+}
 
 <div class="container mt-5">
 

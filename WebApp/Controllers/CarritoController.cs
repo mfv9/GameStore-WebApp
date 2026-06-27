@@ -9,18 +9,22 @@ namespace WebApp.Controllers
         Sistema s = Sistema.getInstance();
         public IActionResult Index()
         {
-            return View(s.CarritoActual.Juegos);
+            int lid = HttpContext.Session.GetInt32("LogueadoId").Value;
+            Cliente actual = s.FindClientById(lid);
+            return View(actual.CarritoActual.Juegos);
         }
 
         [HttpPost]
         public IActionResult AgregarCarrito(int id, bool dlc)
         {
+            int lid = HttpContext.Session.GetInt32("LogueadoId").Value;
+            Cliente actual = s.FindClientById(lid);
             try
             {
-                s.AgregarAlCarrito(id, dlc);
+                s.AgregarAlCarrito(id, dlc, actual);
                 TempData["Mensaje"] = "Agregado al carrito";
 
-                HttpContext.Session.SetInt32("CantidadCarrito", s.CarritoActual.Juegos.Count);
+                HttpContext.Session.SetInt32("CantidadCarrito", actual.CarritoActual.Juegos.Count);
 
             }
             catch (Exception e)
@@ -32,34 +36,41 @@ namespace WebApp.Controllers
             return RedirectToAction("Index", "VideoJuego");
         }
 
-        //[HttpPost]
-        //public IActionResult Comprar(int id, bool dlc)
-        //{
-        //    try
-        //    {
-        //        s.AgregarAlCarrito(id, dlc);
-        //        TempData["Mensaje"] = "Agregado al carrito";
+        [HttpPost]
+        public IActionResult Comprar()
+        {
+            int lid = HttpContext.Session.GetInt32("LogueadoId").Value;
 
-        //        HttpContext.Session.SetInt32("CantidadCarrito", s.CarritoActual.Juegos.Count);
+            try
+            {
+                
+                Cliente actual = s.FindClientById(lid);
+                s.AgregarJuegoDelCarritoActualAListaCompras(lid);
+                TempData["MsjCompra"] = "Compra realizada.";
 
-        //    }
-        //    catch (Exception e)
-        //    {
+                HttpContext.Session.SetInt32("CantidadCarrito", actual.CarritoActual.Juegos.Count);
 
-        //        ViewBag.msg = "Error: " + e.Message;
+            }
+            catch (Exception e)
+            {
 
-        //    }
-        //    return RedirectToAction("Index", "VideoJuego");
-        //}
+                ViewBag.msg = "Error: " + e.Message;
+
+            }
+            return RedirectToAction("Index", "VideoJuego");
+        }
 
         [HttpPost]
 
         public IActionResult Delete(int id)
         {
+            int lid = HttpContext.Session.GetInt32("LogueadoId").Value;
+            Cliente actual = s.FindClientById(lid);
+
             try
             {
-                s.QuitarJuegoDelCarrito(id);
-                HttpContext.Session.SetInt32("CantidadCarrito", s.CarritoActual.Juegos.Count);
+                s.QuitarJuegoDelCarrito(id, actual);
+                HttpContext.Session.SetInt32("CantidadCarrito", actual.CarritoActual.Juegos.Count);
             }
             catch (Exception e)
             {

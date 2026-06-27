@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
@@ -13,7 +14,7 @@ namespace DEMO2
         private static List<Cliente> _clientes = new List<Cliente>();
         private List<VideoJuego> _juegos = new List<VideoJuego>();
         private List<Compra> _compras = new List<Compra>();
-        public Compra CarritoActual { get; set; } = new Compra();
+
         private Sistema()
         {
             Precarga();
@@ -127,11 +128,13 @@ namespace DEMO2
             _clientes.RemoveAll(c => ids.Contains(c.Id));
         }
 
-        public void QuitarJuegoDelCarrito(int id)
+        public void QuitarJuegoDelCarrito(int id, Cliente c)
         {
+
             CarritoCompra eliminar = null;
 
-            foreach (CarritoCompra cc in CarritoActual.Juegos)
+
+            foreach (CarritoCompra cc in c.CarritoActual.Juegos)
             {
                 if (cc.VideoJuego.Id == id)
                 {
@@ -142,7 +145,7 @@ namespace DEMO2
             }
             if (eliminar != null)
             {
-                CarritoActual.Juegos.Remove(eliminar);
+                c.CarritoActual.Juegos.Remove(eliminar);
             }
         }
 
@@ -219,13 +222,14 @@ namespace DEMO2
             }
             return null;
         }
-  
 
 
 
-        public void AgregarAlCarrito(int id, bool dlc)
+
+        public void AgregarAlCarrito(int id, bool dlc, Cliente c)
         {
             VideoJuego juego = FindJuegoPor(id);
+
             if (juego != null)
             {
                 CarritoCompra item = new CarritoCompra
@@ -235,20 +239,19 @@ namespace DEMO2
 
 
                 };
-                CarritoActual.Juegos.Add(item);
+                c.CarritoActual.Juegos.Add(item);
             }
         }
 
-        //public void AgregarJuegoListaCompras(int id)
-        //{
-        //    List<Compra> ret = new List<Compra>();
+        public void AgregarJuegoDelCarritoActualAListaCompras(int id)
+        {
+            Cliente buscado = FindClientById(id);
+            foreach (CarritoCompra carroActual in buscado.CarritoActual.Juegos)
+            { 
+                buscado.MisCompras.Add(carroActual.VideoJuego);
+            }
 
-        //    Cliente buscado = FindClientById(id);
-        //   foreach(Compra c in CarritoActual)
-        //    {
-
-        //    }
-        //}
+        }
 
 
         public Compra FindCompraBy(int id)
@@ -278,16 +281,16 @@ namespace DEMO2
         public List<Compra> VerComprasPorCliente(int id)
         {
             List<Compra> ret = new List<Compra>();
-        
-            foreach(Compra compra in _compras)
+
+            foreach (Compra compra in _compras)
             {
-                if(compra.Cliente.Id == id)
+                if (compra.Cliente.Id == id)
                 {
                     ret.Add(compra);
                 }
             }
             return ret;
-                
+
         }
 
         #region
@@ -426,4 +429,4 @@ namespace DEMO2
     }
 }
 
-    #endregion 
+        #endregion

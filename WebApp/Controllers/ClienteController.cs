@@ -30,7 +30,7 @@ namespace WebApp.Controllers
                 else
                 {
                     s.AltaCliente(c);
-                    TempData["MsjRegister"] = "Cuenta creada correctamente";
+                    TempData["MsjRegister"] = "Cuenta creada correctamente, inicie sesion";
                     return RedirectToAction("Login", "Auth");
                 }
 

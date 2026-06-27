@@ -14,6 +14,7 @@ namespace DEMO2
         public DateTime FechNac { get; set; }
         public string Rol { get; set; }
         public bool EsActivo { get; set; }
+        public Compra CarritoActual { get; set; } = new Compra();
 
         public List<VideoJuego> MisCompras { get; set; } = new();
 
