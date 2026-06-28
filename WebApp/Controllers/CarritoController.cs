@@ -45,11 +45,12 @@ namespace WebApp.Controllers
             {
                 
                 Cliente actual = s.FindClientById(lid);
-                s.AgregarJuegoDelCarritoActualAListaCompras(lid);
+                s.AgregarJuegoDelCarritoActualAListaCompras(actual);
                 TempData["MsjCompra"] = "Compra realizada.";
+               
 
                 HttpContext.Session.SetInt32("CantidadCarrito", actual.CarritoActual.Juegos.Count);
-
+                return RedirectToAction("Index", "Carrito");
             }
             catch (Exception e)
             {
@@ -57,7 +58,7 @@ namespace WebApp.Controllers
                 ViewBag.msg = "Error: " + e.Message;
 
             }
-            return RedirectToAction("Index", "VideoJuego");
+            return View();
         }
 
         [HttpPost]

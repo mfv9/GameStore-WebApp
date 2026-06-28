@@ -243,9 +243,9 @@ namespace DEMO2
             }
         }
 
-        public void AgregarJuegoDelCarritoActualAListaCompras(int id)
+        public void AgregarJuegoDelCarritoActualAListaCompras(Cliente c)
         {
-            Cliente buscado = FindClientById(id);
+            Cliente buscado = FindClientById(c.Id);
             foreach (CarritoCompra carroActual in buscado.CarritoActual.Juegos)
             { 
                 buscado.MisCompras.Add(carroActual.VideoJuego);
